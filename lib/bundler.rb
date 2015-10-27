@@ -120,6 +120,17 @@ module Bundler
     status_code(23)
   end
 
+  class YAMLSyntaxError < BundlerError
+    attr_reader :orig_exception
+
+    def initialize(orig_exception, msg)
+      super(msg)
+      @orig_exception = orig_exception
+    end
+
+    status_code(25)
+  end
+
   class << self
     attr_writer :bundle_path
 
